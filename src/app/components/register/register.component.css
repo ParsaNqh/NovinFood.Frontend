@@ -1,0 +1,42 @@
+#frame {
+    min-height: 100vh;
+    background-color: lightgray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.example-card {
+    max-width: 400px;
+}
+
+.example-header-image {
+    background-image: url('../../../assets/images/food.icon.png');
+    background-size: cover;
+}
+
+img {
+    margin: 10px 5px;
+    margin-bottom: 10px;
+}
+
+.login-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.login-full-width {
+    width: 100%;
+}
+
+button{
+    margin: 3px;
+}
+
+.example-margin {
+    
+    margin: 0 8px;
+}
+
+  

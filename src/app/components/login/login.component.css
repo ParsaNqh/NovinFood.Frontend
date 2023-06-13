@@ -30,24 +30,6 @@ img {
     width: 100%;
 }
 
-mat-error {
-    font-family: persian !important;
-}
-
-mat-label {
-    font-family: persian !important;
-}
-
-.username {
-    font-family: persian !important;
-}
-
-mat-hint{
-    font-family: persian !important;
-}
-
 button{
-    font-family: persian !important;
     margin: 3px;
-    font-size: medium;
 }
