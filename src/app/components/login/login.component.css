@@ -1,7 +1,53 @@
-#frame{
+#frame {
     height: 100vh;
     background-color: lightgray;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.example-card {
+    max-width: 400px;
+}
+
+.example-header-image {
+    background-image: url('../../../assets/images/food.icon.png');
+    background-size: cover;
+}
+
+img {
+    margin: 10px 5px;
+    margin-bottom: 10px;
+}
+
+.login-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.login-full-width {
+    width: 100%;
+}
+
+mat-error {
+    font-family: persian !important;
+}
+
+mat-label {
+    font-family: persian !important;
+}
+
+.username {
+    font-family: persian !important;
+}
+
+mat-hint{
+    font-family: persian !important;
+}
+
+button{
+    font-family: persian !important;
+    margin: 3px;
+    font-size: medium;
 }

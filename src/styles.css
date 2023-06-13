@@ -1,6 +1,19 @@
-html,body{min-height: 100vh;}
-body{
+html,
+body {
+    min-height: 100vh;
+}
+
+body {
     margin: 0;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@font-face {
+    font-family: Persian;
+    src: url(./assets/fonts/Sans.woff2);
+}
+mat-card-title,mat-card-subtitle{
+    font-family: persian !important;
+}
+
+
+

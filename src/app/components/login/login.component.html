@@ -1,7 +1,46 @@
 <div id="frame">
-  <div id="login">
-    <div>
-      <a [routerLink]="'/register'">ثبت نام</a>
-    </div>
-  </div>
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>سامانه سفارش غذا</mat-card-title>
+      <mat-card-subtitle>استار فوود</mat-card-subtitle>
+    </mat-card-header>
+    <img
+      mat-card-image
+      src="../../../assets/images/fast-food.jpg"
+    />
+    <mat-card-content>
+      <form class="login-form">
+        <mat-form-field class="login-full-width">
+          <mat-label>نام کاربری</mat-label>
+          <input class="username" type="text" matInput [formControl]="username" 
+                 placeholder="نام کاربری">
+          <!-- <mat-hint>نام کاربری  را وارد کنید</mat-hint> -->
+          <mat-error *ngIf="username.hasError('required')">
+            نام کاربری الزامیست
+          </mat-error>
+          <mat-error *ngIf="username.hasError('minlength')">
+            نام کاری باید حداقل 2 حرف باشد
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="login-full-width">
+          <mat-label>کلمه عبور</mat-label>
+          <input class="username" type="password" matInput [formControl]="password" 
+                 placeholder="کلمه عبور">
+          <!-- <mat-hint>کلمه عبور را وارد کنید</mat-hint> -->
+          <mat-error *ngIf="username.hasError('required')">
+            کلمه عبور الزامیست
+          </mat-error>
+          <mat-error *ngIf="password.hasError('minlength')">
+            نام کاری باید حداقل 8 حرف باشد
+          </mat-error>
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+    <mat-card-actions>
+      <button (click)="login()" [disabled]="username.invalid || password.invalid" mat-raised-button>ورود</button>
+      <button (click)="create()"  mat-raised-button>ثبت نام</button>
+    </mat-card-actions>
+  </mat-card>
 </div>
