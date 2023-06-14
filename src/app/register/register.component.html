@@ -1,0 +1,122 @@
+<div id="frame">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>سامانه سفارش غذا</mat-card-title>
+        <mat-card-subtitle>استار فوود</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src="../../../assets/images/fast-food.jpg" />
+      <div id="restaurant">
+        <mat-checkbox [(ngModel)]="restaurant" class="example-margin"
+          >رستوران دار هستید؟</mat-checkbox
+        >
+      </div>
+      <mat-card-content>
+        <form class="login-form">
+  
+          <mat-form-field appearance="fill" class="login-full-width" >
+            <mat-label>استان</mat-label>
+            <mat-select [formControl]="city" required >
+              <mat-option value="option1">همدان</mat-option>
+              <mat-option value="option2">تهران</mat-option>
+              <mat-option value="option3">کرمانشاه</mat-option>
+            </mat-select>
+            <mat-error *ngIf="city.hasError('required')">
+                انتخاب استان الزامیست
+              </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field *ngIf="restaurant == false" class="login-full-width">
+            <mat-label>نام کاربری</mat-label>
+            <input
+              class="username"
+              type="text"
+              matInput
+              [formControl]="username"
+              placeholder="نام کاربری"
+            />
+            <mat-error *ngIf="username.hasError('required')">
+              نام کاربری الزامیست
+            </mat-error>
+            <mat-error *ngIf="username.hasError('minlength')">
+              نام کاری باید حداقل 2 حرف باشد
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field *ngIf="restaurant" class="login-full-width">
+            <mat-label>نام رستوران</mat-label>
+            <input
+              class="username"
+              type="text"
+              matInput
+              [formControl]="restaurantName"
+              placeholder="نام رستوران"
+            />
+            <mat-error *ngIf="restaurantName.hasError('required')">
+              نام رستوران الزامیست
+            </mat-error>
+            <mat-error *ngIf="restaurantName.hasError('minlength')">
+              نام رستوران باید بیشتر از 5 حرف باشد
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field *ngIf="restaurant" class="login-full-width">
+            <mat-label>آدرس رستوران</mat-label>
+            <input
+              class="username"
+              type="text"
+              matInput
+              [formControl]="restaurantAddress"
+              placeholder="نام رستوران"
+            />
+            <mat-error *ngIf="restaurantAddress.hasError('required')">
+              آدرس رستوران الزامیست
+            </mat-error>
+            <mat-error *ngIf="restaurantAddress.hasError('minlength')">
+              آدرس رستوران باید بیشتر از 10 حرف باشد
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field class="login-full-width">
+            <mat-label>کلمه عبور</mat-label>
+            <input
+              class="username"
+              type="password"
+              matInput
+              [formControl]="password"
+              placeholder="کلمه عبور"
+            />
+            <mat-error *ngIf="password.hasError('required')">
+              کلمه عبور الزامیست
+            </mat-error>
+            <mat-error *ngIf="password.hasError('minlength')">
+              نام کاری باید حداقل 8 حرف باشد
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field class="login-full-width">
+            <mat-label>تکرار کلمه عبور</mat-label>
+            <input
+              class="username"
+              type="password"
+              matInput
+              [formControl]="repeatPassword"
+              placeholder="تکرار کلمه عبور"
+            />
+            <mat-error *ngIf="repeatPassword != password">
+              کلمه عبور صحیح نیست
+            </mat-error>
+          </mat-form-field>
+        </form>
+      </mat-card-content>
+      <mat-card-actions>
+        <button
+          [disabled]="password.invalid || repeatPassword.invalid || city.invalid || restaurant && restaurantAddress.invalid ||  restaurant && restaurantName.invalid "
+          (click)="create()"
+          mat-raised-button
+        >
+          ثبت نام
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>

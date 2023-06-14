@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -15,4 +14,5 @@ export class RegisterComponent {
   restaurant: boolean = false;
   repeatPassword = new FormControl('', [Validators.required ]);
   create() { };
+
 }
