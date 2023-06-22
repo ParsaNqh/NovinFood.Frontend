@@ -12,7 +12,7 @@ export class RegisterComponent {
   city = new FormControl('', [Validators.required]);
   restaurantAddress = new FormControl('', [Validators.required, Validators.minLength(10)]);
   restaurant: boolean = false;
-  repeatPassword = new FormControl('', [Validators.required ]);
+  repeatPassword = new FormControl('', [Validators.required]);
   create() { };
 
 }
