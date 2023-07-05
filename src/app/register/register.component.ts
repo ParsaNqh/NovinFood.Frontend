@@ -11,7 +11,7 @@ export class RegisterComponent {
   restaurantName = new FormControl('', [Validators.required, Validators.minLength(5)]);
   city = new FormControl('', [Validators.required]);
   restaurantAddress = new FormControl('', [Validators.required, Validators.minLength(10)]);
-  restaurant: boolean = false;
+  restaurant : string = "";
   repeatPassword = new FormControl('', [Validators.required]);
   create() { };
 
