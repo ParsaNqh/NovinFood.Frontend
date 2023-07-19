@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { LoginService } from './login.service';
 import { Router } from '@angular/router';
+import { BackendService } from 'src/app/services/backend.service';
 
 @Component({
   selector: 'app-login',
@@ -10,15 +10,20 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
 
-  constructor(private loginService: LoginService , private router:Router) {
+  constructor(private backend: BackendService, private router: Router) {
 
   }
   username = new FormControl('', [Validators.required, Validators.minLength(2)]);
   password = new FormControl('', [Validators.required, Validators.minLength(8)]);
   login() {
-    this.loginService.login(this.username.value??'',this.password.value??'')
+    this.backend.http
+    .post(this.backend.securityAPI + 'login',{username:this.username.value,password:this.password.value})
+    .subscribe(result=>
+      {
+        console.log(result)
+      })
   }
-  create(){
+  create() {
     this.router.navigateByUrl('/register')
   }
 }
