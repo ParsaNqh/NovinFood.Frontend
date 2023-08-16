@@ -1,46 +1,75 @@
-<div id="frame">
-  <mat-card class="example-card">
-    <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>سامانه سفارش غذا</mat-card-title>
-      <mat-card-subtitle>استار فوود</mat-card-subtitle>
-    </mat-card-header>
-    <img
-      mat-card-image
-      src="../../../assets/images/fast-food.jpg"
-    />
-    <mat-card-content>
-      <form class="login-form">
-        <mat-form-field class="login-full-width">
-          <mat-label>نام کاربری</mat-label>
-          <input class="username" type="text" matInput [formControl]="username" 
-                 placeholder="نام کاربری">
-          <!-- <mat-hint>نام کاربری  را وارد کنید</mat-hint> -->
-          <mat-error *ngIf="username.hasError('required')">
-            نام کاربری الزامیست
-          </mat-error>
-          <mat-error *ngIf="username.hasError('minlength')">
-            نام کاری باید حداقل 2 حرف باشد
-          </mat-error>
-        </mat-form-field>
+<body>
+  <img class="back" src="./assets/images/background.jpg" alt="" />
+  <div id="frame">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>سامانه سفارش غذا</mat-card-title>
+        <mat-card-subtitle>استار فوود</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src="../../../assets/images/fast-food.jpg" />
+      <mat-card-content>
+        <form class="login-form">
+          <mat-form-field class="login-full-width">
+            <mat-label>شماره همراه</mat-label>
+            <input
+            [maxLength]="11"
+            (keypress)="check($event)"
+              class="username"
+              type="text"
+              matInput
+              [formControl]="phoneNumber"
+              placeholder="091xxxxxxxx"
+            />
+            <mat-error *ngIf="phoneNumber.hasError('required')">
+              شماره همراه الزامیست
+            </mat-error>
+            <mat-error *ngIf="phoneNumber.hasError('minlength')">
+              شماره همراه باید حداقل 11 حرف باشد
+            </mat-error>
+          </mat-form-field>
 
-        <mat-form-field class="login-full-width">
-          <mat-label>کلمه عبور</mat-label>
-          <input class="username" type="password" matInput [formControl]="password" 
-                 placeholder="کلمه عبور">
-          <!-- <mat-hint>کلمه عبور را وارد کنید</mat-hint> -->
-          <mat-error *ngIf="password.hasError('required')">
-            کلمه عبور الزامیست
-          </mat-error>
-          <mat-error *ngIf="password.hasError('minlength')">
-            نام کاری باید حداقل 8 حرف باشد
-          </mat-error>
-        </mat-form-field>
-      </form>
-    </mat-card-content>
-    <mat-card-actions>
-      <button (click)="login()" [disabled]="username.invalid || password.invalid" mat-raised-button>ورود</button>
-      <button (click)="create()"  mat-raised-button>ثبت نام</button>
-    </mat-card-actions>
-  </mat-card>
-</div>
+          <mat-form-field class="login-full-width">
+            <mat-label>کلمه عبور</mat-label>
+            <input
+              class="username"
+              type="password"
+              matInput
+              [formControl]="password"
+              placeholder="کلمه عبور"
+            />
+            <!-- <mat-hint>کلمه عبور را وارد کنید</mat-hint> -->
+            <mat-error *ngIf="password.hasError('required')">
+              کلمه عبور الزامیست
+            </mat-error>
+            <mat-error *ngIf="password.hasError('minlength')">
+              نام کاری باید حداقل 8 حرف باشد
+            </mat-error>
+          </mat-form-field>
+          <mat-checkbox
+            name="rememberMe"
+            [(ngModel)]="rememberMe"
+            class="example-margin"
+            >من را به خاطر بسپار</mat-checkbox
+          >
+        </form>
+      </mat-card-content>
+      <mat-card-actions *ngIf="isBusy == false">
+        <button
+          (click)="login()"
+          [disabled]="phoneNumber.invalid || password.invalid"
+          mat-raised-button
+          color="primary"
+        >
+          ورود
+        </button>
+        <button class="colorOfButton" (click)="back()" mat-raised-button>
+          ثبت نام
+        </button>
+      </mat-card-actions>
+      <div *ngIf="isBusy == true">
+        <mat-progress-bar mode="query"></mat-progress-bar>
+      </div>
+    </mat-card>
+  </div>
+</body>

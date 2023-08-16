@@ -7,24 +7,12 @@ body {
     margin: 0;
 }
 
-.back{
-    min-width: 100vw;
-    min-height: 100vh;
-    position: fixed;
-    left: 0;
-    top: 0;
-    filter: blur(3.5px);
-}
+
 
 @font-face {
     font-family: Persian;
     src: url(./assets/fonts/Sans.woff2);
 }
-mat-card-title,mat-card-subtitle{
-    font-family: persian !important;
-}
-
 *{
-    font-family: persian !important;
+    font-family: 'persian' !important;
 }
-

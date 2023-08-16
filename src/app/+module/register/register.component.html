@@ -23,6 +23,8 @@
               <mat-form-field *ngIf="restaurant =='owner'"   class="login-full-width">
                 <mat-label>نام رستوران</mat-label>
                 <input
+            (keypress)="check2($event)"
+
                 class="username"
                 type="text"
                 matInput
@@ -41,6 +43,7 @@
               <mat-form-field *ngIf="restaurant =='owner'" class="login-full-width">
                 <mat-label>آدرس رستوران</mat-label>
                 <input
+            (keypress)="check2($event)"
                 class="username"
                 type="text"
                 matInput
@@ -63,19 +66,21 @@
           <tr>
             <td>
               <mat-form-field *ngIf="restaurant =='owner' || restaurant =='customer'"  class="login-full-width">
-                <mat-label>نام کاربری</mat-label>
+                <mat-label>شماره همراه</mat-label>
                 <input
+                (keypress)="check($event)"
                 class="username"
                 type="text"
                 matInput
-                [formControl]="username"
-                placeholder="نام کاربری"
+                [formControl]="phoneNumber"
+                placeholder="091xxxxxxxx"
+                max="11"
                 />
-                <mat-error *ngIf="username.hasError('required')">
-                  نام کاربری الزامیست
+                <mat-error *ngIf="phoneNumber.hasError('required')">
+                   شماره همراه الزامیست
                 </mat-error>
-                <mat-error *ngIf="username.hasError('minlength')">
-                  نام کاری باید حداقل 2 حرف باشد
+                <mat-error *ngIf="phoneNumber.hasError('minlength')">
+                   شماره همراه باید حداقل 11 حرف باشد
                 </mat-error>
               </mat-form-field>
             </td>
@@ -135,6 +140,7 @@
     <mat-card-actions>
       <button
         [disabled]="
+        phoneNumber.invalid ||
           password.invalid ||
           repeatPassword.invalid ||
           city.invalid ||
@@ -143,9 +149,11 @@
         "
         (click)="create()"
         mat-raised-button
+        color="primary"
       >
         ثبت نام
       </button>
+      <button class="colorOfButton" (click)="return()"  mat-raised-button>بازگشت</button>
     </mat-card-actions>
   </mat-card>
 </div>

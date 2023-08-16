@@ -39,3 +39,7 @@ button {
     margin: 0 8px;
 }
 
+.colorOfButton{
+    background-color: rgba(47, 232, 60, 0.807) !important;
+}
+

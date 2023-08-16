@@ -14,7 +14,8 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatRadioModule} from '@angular/material/radio';
 import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
 import {HttpClientModule} from '@angular/common/http'
-
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,9 @@ import {HttpClientModule} from '@angular/common/http'
     MatSelectModule,
     MatRadioModule,
     RxReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatProgressBarModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
