@@ -43,3 +43,18 @@ button {
     background-color: rgba(47, 232, 60, 0.807) !important;
 }
 
+.back{
+    min-width: 100vw;
+    min-height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    filter: blur(3.5px);
+}
+
+/* .passwordCheck{
+    position: absolute;
+    top: 6vh;
+    font-size: small;
+    z-index: 100 !important;
+} */

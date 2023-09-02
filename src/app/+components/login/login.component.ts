@@ -3,7 +3,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { json } from '@rxweb/reactive-form-validators';
-import { BackendSecurityServiceService } from 'src/app/services/backend-security-service.service';
+import { BackendSecurityServicesService } from 'src/app/services/backend-security-services.service';
 import { BackendService } from 'src/app/services/backend.service';
 
 @Component({
@@ -13,11 +13,11 @@ import { BackendService } from 'src/app/services/backend.service';
 })
 export class LoginComponent {
 
-  constructor(private backend: BackendSecurityServiceService, private router: Router, private _snackBar: MatSnackBar) {
+  constructor(private backend : BackendSecurityServicesService, private router: Router, private _snackBar: MatSnackBar) {
 
   }
   phoneNumber = new FormControl('', [Validators.required, Validators.minLength(11)]);
-  password = new FormControl('', [Validators.required, Validators.minLength(8)]);
+  password = new FormControl('', [Validators.required, Validators.minLength(5)]);
   isBusy: boolean = false;
   message: string = '';
   rememberMe: boolean = false;
@@ -28,7 +28,7 @@ export class LoginComponent {
     this.backend.login(username ?? '', password ?? '').subscribe(r => {
       let result = r as any
       if (result.success == false) {
-        this.message = (r as any).message;
+        this.message = result.message;
         this._snackBar.open(this.message, '', {
           duration: 3000
         })
@@ -77,12 +77,6 @@ export class LoginComponent {
     }
     );
   }
-  // this.backend.http
-  // .post(this.backend.securityAPI + 'login',{username:this.phoneNumber.value,password:this.password.value})
-  // .subscribe(result=>
-  //   {
-  //     console.log(result)
-  //   })
   back() {
     this.router.navigateByUrl('/register')
   }
