@@ -12,11 +12,11 @@
         <form class="login-form">
           <mat-form-field class="login-full-width">
             <mat-label>شماره همراه</mat-label>
-            <input
-            [maxLength]="11"
-            (keypress)="check($event)"
+            <input  
+              [maxLength]="11"
+              (keypress)="check($event)"
               class="username"
-              type="text"
+              type="tel"
               matInput
               [formControl]="phoneNumber"
               placeholder="091xxxxxxxx"
@@ -26,6 +26,9 @@
             </mat-error>
             <mat-error *ngIf="phoneNumber.hasError('minlength')">
               شماره همراه باید حداقل 11 حرف باشد
+            </mat-error>
+            <mat-error *ngIf="phoneNumber.hasError('pattern')">
+              لطفا شماره همراه معتبر وارد کنید
             </mat-error>
           </mat-form-field>
 

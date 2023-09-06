@@ -16,11 +16,12 @@ import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
 import {HttpClientModule} from '@angular/common/http'
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-
+import { AdminLoginComponent } from './+components/admin-login/admin-login.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
+    AdminLoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +39,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     RxReactiveFormsModule,
     HttpClientModule,
     MatProgressBarModule,
-    MatSnackBarModule
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

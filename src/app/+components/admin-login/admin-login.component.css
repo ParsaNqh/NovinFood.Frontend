@@ -1,0 +1,65 @@
+#frame {
+    height: 100vh;
+    background-color: lightgray;    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.back{
+    min-width: 100vw;
+    min-height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    filter: blur(3.5px);
+}
+
+.example-card {
+    max-width: 400px;
+}
+
+.example-header-image {
+    background-image: url('../../../assets/images/food.icon.png');
+    background-size: cover;
+}
+
+img {
+    margin: 10px 5px;
+    margin-bottom: 10px;
+}
+
+.login-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.login-full-width {
+    width: 100%;
+}
+
+button {
+    margin: 3px;
+}
+
+.colorOfButton {
+    background-color: rgba(47, 232, 60, 0.807) !important;
+}
+
+/* mat-card-title,
+mat-card-subtitle,
+button,
+mat-form-field,
+mat-label,
+mat-hint,
+mat-error{
+    font-family: persian;
+} */
+
+.example-section {
+    margin: 12px 0;
+}
+
+.example-margin {
+    margin: 0 12px;
+}

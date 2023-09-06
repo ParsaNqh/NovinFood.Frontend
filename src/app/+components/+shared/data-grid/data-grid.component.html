@@ -1,0 +1,17 @@
+<table id="dataGrid">
+  <thead>
+    <tr>
+      <th *ngFor="let item of columns">{{ item }}</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of data">
+      <td *ngFor="let col of columns">{{ item[col] }}</td>
+      <td>
+        <button mat-raised-button color="primary">ویرایش</button>
+        <button mat-raised-button color="warn">حذف</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -5,36 +5,31 @@ import { Router } from '@angular/router';
 import { BackendSecurityServicesService } from 'src/app/services/backend-security-services.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  selector: 'app-admin-login',
+  templateUrl: './admin-login.component.html',
+  styleUrls: ['./admin-login.component.css']
 })
-export class LoginComponent {
-
+export class AdminLoginComponent {
   constructor(private backend: BackendSecurityServicesService, private router: Router, private _snackBar: MatSnackBar) {
 
   }
-  phoneNumber = new FormControl('', [Validators.required,
-  Validators.minLength(11),
-  Validators.maxLength(11),
-  Validators.pattern('091[0-9 ]{8}')
-  ]);
-  password = new FormControl('', [Validators.required, Validators.minLength(5)]);
+  username = new FormControl('', [Validators.required]);
+  password = new FormControl('', [Validators.required]);
   isBusy: boolean = false;
   message: string = '';
   rememberMe: boolean = false;
   login() {
     this.isBusy = true
-    let username: string | undefined = this.phoneNumber.value?.toString();
+    let username: string | undefined = this.username.value?.toString();
     let password: string | undefined = this.password.value?.toString();
-    this.backend.login(username ?? '', password ?? '').subscribe(r => {
+    this.backend.adminLogin(username ?? '', password ?? '').subscribe(r => {
       let result = r as any
       if (result.success == false) {
         this.message = result.message;
         this._snackBar.open(this.message, '', {
           duration: 3000
         })
-        this.phoneNumber.setValue('');
+        this.username.setValue('');
         this.password.setValue('');
         this.isBusy = false
       }
@@ -46,11 +41,8 @@ export class LoginComponent {
         })
         this.isBusy = false
         switch (result.type) {
-          case 'RestaurantOwner':
-            this.router.navigate(['/restaurants'])
-            break;
-          case 'Costomer':
-            this.router.navigate(['/Customers'])
+          case 'SystemAdmin':
+            this.router.navigate(['/admins'])
             break;
         }
         if (this.rememberMe) {
@@ -61,11 +53,8 @@ export class LoginComponent {
           })
           this.isBusy = false
           switch (result.type) {
-            case 'RestaurantOwner':
-              this.router.navigate(['/restaurants'])
-              break;
-            case 'Costomer':
-              this.router.navigate(['/Customers'])
+            case 'SystemAdmin':
+              this.router.navigate(['/admins'])
               break;
           }
         }
@@ -73,11 +62,8 @@ export class LoginComponent {
     }
     );
   }
-  back() {
-    this.router.navigateByUrl('/register')
-  }
   check(event: KeyboardEvent) {
-    if (event.key >= '0' && event.key <= '9') { }
+    if (event.key >= 'a' && event.key <= 'z') { }
     else {
       event.preventDefault();
     }

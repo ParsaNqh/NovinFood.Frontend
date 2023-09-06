@@ -1,0 +1,67 @@
+<body>
+    <img class="back" src="./assets/images/background.jpg" alt="" />
+    <div id="frame">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>سامانه سفارش غذا</mat-card-title>
+          <mat-card-subtitle>استار فوود</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="../../../assets/images/fast-food.jpg" />
+        <mat-card-content>
+          <form class="login-form">
+            <mat-form-field class="login-full-width">
+              <mat-label>نام کاربری</mat-label>
+              <input
+              [maxLength]="11"
+              (keypress)="check($event)"
+                class="username"
+                type="text"
+                matInput
+                [formControl]="username"
+                placeholder="نام کاربری"
+              />
+              <mat-error *ngIf="username.hasError('required')">
+                 نام کاربری الزامیست
+              </mat-error>
+            </mat-form-field>
+  
+            <mat-form-field class="login-full-width">
+              <mat-label>کلمه عبور</mat-label>
+              <input
+                class="username"
+                type="password"
+                matInput
+                [formControl]="password"
+                placeholder="کلمه عبور"
+              />
+              <mat-error *ngIf="password.hasError('required')">
+                کلمه عبور الزامیست
+              </mat-error>
+            </mat-form-field>
+            <mat-checkbox
+              name="rememberMe"
+              [(ngModel)]="rememberMe"
+              class="example-margin"
+              >من را به خاطر بسپار</mat-checkbox
+            >
+          </form>
+        </mat-card-content>
+        <mat-card-actions *ngIf="isBusy == false">
+          <button
+          
+            (click)="login()"
+            [disabled]="username.invalid || password.invalid"
+            mat-raised-button
+            color="primary"
+          >
+            ورود
+          </button>
+        </mat-card-actions>
+        <div *ngIf="isBusy == true">
+          <mat-progress-bar mode="query"></mat-progress-bar>
+        </div>
+      </mat-card>
+    </div>
+  </body>
+  
