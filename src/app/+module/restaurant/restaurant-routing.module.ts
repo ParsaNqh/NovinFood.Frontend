@@ -6,7 +6,7 @@ import { MyRequestsComponent } from './+pages/+components/my-requests/my-request
 const routes: Routes = [
   {
     path: '', component: RestaurantComponent, children: [
-      { path: 'merequests', component: MyRequestsComponent }
+      { path: 'myrequests', component: MyRequestsComponent }
     ]
   }
 ];

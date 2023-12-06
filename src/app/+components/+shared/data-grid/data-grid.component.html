@@ -1,17 +1,71 @@
-<table id="dataGrid">
-  <thead>
-    <tr>
-      <th *ngFor="let item of columns">{{ item }}</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let item of data">
-      <td *ngFor="let col of columns">{{ item[col] }}</td>
-      <td>
-        <button mat-raised-button color="primary">ویرایش</button>
-        <button mat-raised-button color="warn">حذف</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<div style="overflow-x: auto">
+  <table id="dataGrid">
+    <thead>
+      <tr>
+        <th *ngFor="let item of columns">{{ item.title }}</th>
+        <th>ویرایش</th>
+      </tr>
+      <tr>
+        <th *ngFor="let item of columns">
+          <input id="search_input" type="text" placeholder="جستجو کنید..." />
+        </th>
+        <th *ngIf="createRestaurant == false">سامانه سفارش غذا استارفود</th>
+        <th *ngIf="createRestaurant">
+          <button (click)="create()" class="restaurantButton" mat-raised-button>
+            رستوران جدید
+          </button>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of data">
+        <td *ngFor="let col of columns">
+          <ng-container [ngSwitch]="col.type">
+            <ng-container *ngSwitchCase="'text'">{{
+              item[col.field]
+            }}</ng-container>
+            <ng-container *ngSwitchCase="'check'">
+              <mat-checkbox
+                [color]="'primary'"
+                disabled
+                [checked]="item[col.field]"
+                class="checkbox-margin"
+              ></mat-checkbox>
+            </ng-container>
+            <ng-container *ngSwitchCase="'button'">
+              <span
+                ><button mat-raised-button [color]="'primary'">
+                  {{ item[col.field] }}
+                </button></span
+              >
+            </ng-container>
+            <ng-container *ngSwitchDefault="'text'">{{
+              item[col.field]
+            }}</ng-container>
+          </ng-container>
+        </td>
+        <td>
+          <button
+            *ngIf="editable"
+            (click)="onEdit.emit(item)"
+            mat-raised-button
+            color="primary"
+          >
+            <mat-icon fontIcon="edit"></mat-icon>
+          </button>
+          <button
+            *ngIf="removeable"
+            (click)="onDelete.emit(item)"
+            mat-raised-button
+            color="warn"
+          >
+            <mat-icon fontIcon="delete"></mat-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div *ngIf="loading == true">
+  <mat-progress-bar mode="query"></mat-progress-bar>
+</div>

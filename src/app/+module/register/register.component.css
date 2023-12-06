@@ -39,11 +39,11 @@ button {
     margin: 0 8px;
 }
 
-.colorOfButton{
+.colorOfButton {
     background-color: rgba(47, 232, 60, 0.807) !important;
 }
 
-.back{
+.back {
     min-width: 100vw;
     min-height: 100vh;
     position: fixed;
@@ -57,4 +57,23 @@ button {
     top: 6vh;
     font-size: small;
     z-index: 100 !important;
+} */
+
+/* * {
+    font-family: persian !important;
+} */
+.serverError{
+    color: black;
+    border: 1px solid red ;
+    text-align: center;
+    padding: 5px;
+    background-color: pink;
+    border-radius: 5px;
+}
+
+/* .mdc-form-field{
+     var(--mdc-typography-body2-font-family : persian);
+    --mdc-typography-font-family : persian 
+    --mdc-typography-body2-font-family:persian !important ;
+    --mdc-typography-font-family:persian !important;
 } */

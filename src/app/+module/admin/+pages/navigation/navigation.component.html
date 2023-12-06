@@ -6,13 +6,13 @@
     <mat-toolbar>مدیریت</mat-toolbar>
     <mat-nav-list>
       <a mat-list-item [routerLink]="'users'">کاربران</a>
-      <a mat-list-item href="#">درخواست های رستوران</a>
+      <a mat-list-item [routerLink]="'restaurantrequest'">درخواست های رستوران</a>
       <a mat-list-item href="#">رستوران ها</a>
       <a mat-list-item href="#">مشتری ها</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
+    <mat-toolbar style="max-width: 100vw;" color="primary">
       <button
         type="button"
         aria-label="Toggle sidenav"
@@ -22,6 +22,7 @@
         <mat-icon aria-label="Side nav toggle icon"></mat-icon>
       </button>
       <span>سامانه سفارش غذا استارفود</span>
+      <button (click)="exit()" class="exit">خروج</button>
     </mat-toolbar>
     <router-outlet></router-outlet>
   </mat-sidenav-content>

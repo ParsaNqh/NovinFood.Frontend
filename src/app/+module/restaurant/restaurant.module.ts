@@ -15,6 +15,7 @@ import { NavigationComponent } from './+pages/+components/navigation/navigation.
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { DataGridComponent } from 'src/app/+components/+shared/data-grid/data-grid.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DataGridComponent
   ]
 })
 export class RestaurantModule { }

@@ -1,3 +1,15 @@
 .login-full-width {
     width: 100%;
 }
+
+/* .mat-mdc-dialog-container .mdc-dialog__title{} */
+/* .mat-mdc-dialog-container{
+
+    --mdc-dialog-subhead-font: persian;
+} */
+/* .mat-mdc-dialog-container {
+    --mdc-dialog-subhead-font: persian !important;
+} */
+/* .mat-mdc-dialog-container .mdc-dialog__title {
+    font-family: 'Persian';
+} */

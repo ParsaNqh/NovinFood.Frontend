@@ -17,11 +17,12 @@ export class LoginComponent {
   phoneNumber = new FormControl('', [Validators.required,
   Validators.minLength(11),
   Validators.maxLength(11),
-  Validators.pattern('091[0-9 ]{8}')
+  Validators.pattern('09[0-9 ]{9}')
   ]);
   password = new FormControl('', [Validators.required, Validators.minLength(5)]);
   isBusy: boolean = false;
   message: string = '';
+  errorMessage: string = '';
   rememberMe: boolean = false;
   login() {
     this.isBusy = true
@@ -29,7 +30,13 @@ export class LoginComponent {
     let password: string | undefined = this.password.value?.toString();
     this.backend.login(username ?? '', password ?? '').subscribe(r => {
       let result = r as any
-      if (result.success == false) {
+      if (r && (r as any).serverError) {
+        this.isBusy = false;
+        this.errorMessage = (r as any).serverError;
+        this.phoneNumber.setValue('');
+        this.password.setValue('');
+      }
+      else if (result.success == false) {
         this.message = result.message;
         this._snackBar.open(this.message, '', {
           duration: 3000
@@ -50,7 +57,7 @@ export class LoginComponent {
             this.router.navigate(['/restaurants'])
             break;
           case 'Costomer':
-            this.router.navigate(['/Customers'])
+            this.router.navigate(['/customers'])
             break;
         }
         if (this.rememberMe) {
@@ -65,7 +72,7 @@ export class LoginComponent {
               this.router.navigate(['/restaurants'])
               break;
             case 'Costomer':
-              this.router.navigate(['/Customers'])
+              this.router.navigate(['/customers'])
               break;
           }
         }

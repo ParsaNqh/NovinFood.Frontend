@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { BackendSecurityServicesService } from 'src/app/services/backend-security-services.service';
 import { matchPassword } from './confirm-password.validator';
+import { catchError, of } from 'rxjs';
 
 @Component({
   selector: 'app-register',
@@ -26,17 +27,25 @@ export class RegisterComponent {
     let type: number | undefined = Number(this.register.controls.type.value?.toString());
     let email: string | undefined = this.register.controls.email.value?.toString();
     let city: string | undefined = this.register.controls.city.value?.toString();
-    this.backend.register(username ?? '', password ?? '', type ?? 2, fullname ?? '', email ?? '', city ?? '').subscribe(r => {
-      this._snackBar.open('ثبت نام با موفقیت انجام شد', '', {
-        duration: 3000
-      }).afterDismissed().subscribe(r => {
-        this.router.navigate(['/login']);
+    this.backend.register(username ?? '', password ?? '', type ?? 2, fullname ?? '', email ?? '', city ?? '')
+
+      .subscribe(r => {
+        if (r && (r as any).serverError) {
+          this.isBusy = false;
+          this.message = (r as any).serverError;
+        }
+        else {
+          this._snackBar.open('ثبت نام با موفقیت انجام شد', '', {
+            duration: 3000
+          }).afterDismissed().subscribe(r => {
+            this.router.navigate(['/login']);
+          });
+        }
       });
-    });
   }
 
   register = this.fb.group({
-  username: ['', [Validators.required, Validators.minLength(11),Validators.pattern('091[0-9 ]{8}')]],
+    username: ['', [Validators.required, Validators.minLength(11), Validators.pattern('091[0-9 ]{8}')]],
     fullname: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email]],
     type: ['', [Validators.required]],
@@ -51,7 +60,7 @@ export class RegisterComponent {
       validators: matchPassword
     })
 
-  return() {
+  returnTo() {
     this.router.navigateByUrl('/login');
   };
   checkPhoneNumber(event: KeyboardEvent) {

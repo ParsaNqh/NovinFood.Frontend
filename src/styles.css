@@ -14,5 +14,5 @@ body {
     src: url(./assets/fonts/Sans.woff2);
 }
 *{
-    font-family: 'persian' !important;
+    font-family: 'persian' ;
 }

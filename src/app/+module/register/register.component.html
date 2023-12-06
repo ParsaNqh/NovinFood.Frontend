@@ -38,6 +38,11 @@
                   >
                     شماره همراه باید حداقل 11 حرف باشد
                   </mat-error>
+                  <mat-error
+                    *ngIf="register.controls.username.hasError('pattern')"
+                  >
+                    لطفا شماره همراه معتبر وارد کنید
+                  </mat-error>
                 </mat-form-field>
               </td>
               <td>
@@ -158,6 +163,9 @@
             </tr>
           </table>
         </form>
+        <div *ngIf="message" class="serverError">
+          {{ message }}
+        </div>
       </mat-card-content>
       <mat-card-actions>
         <button
@@ -173,7 +181,7 @@
         >
           ثبت نام
         </button>
-        <button class="colorOfButton" (click)="return()" mat-raised-button>
+        <button class="colorOfButton" (click)="returnTo()" mat-raised-button>
           بازگشت
         </button>
       </mat-card-actions>

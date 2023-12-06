@@ -57,6 +57,7 @@
           >
         </form>
       </mat-card-content>
+      <div class="serverError" *ngIf="errorMessage">{{errorMessage}}</div>
       <mat-card-actions *ngIf="isBusy == false">
         <button
           (click)="login()"
@@ -66,7 +67,7 @@
         >
           ورود
         </button>
-        <button class="colorOfButton" (click)="back()" mat-raised-button>
+        <button  class="colorOfButton" (click)="back()" mat-raised-button>
           ثبت نام
         </button>
       </mat-card-actions>

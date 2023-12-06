@@ -17,11 +17,15 @@ import {HttpClientModule} from '@angular/common/http'
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { AdminLoginComponent } from './+components/admin-login/admin-login.component';
+import { NewRestaurantComponent } from './+components/+shared/data-grid/new-restaurant/new-restaurant.component';
+import {MatDialogModule} from '@angular/material/dialog';
+
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     AdminLoginComponent,
+    NewRestaurantComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,6 +44,7 @@ import { AdminLoginComponent } from './+components/admin-login/admin-login.compo
     HttpClientModule,
     MatProgressBarModule,
     MatSnackBarModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

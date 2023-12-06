@@ -8,10 +8,30 @@
 
 .sidenav .mat-toolbar {
   background: inherit;
+  font-family: persian;
 }
 
 .mat-toolbar.mat-primary {
   position: sticky;
   top: 0;
   z-index: 1;
+  font-family: persian;
+
+}
+
+.mat-mdc-list-base {
+  --mdc-list-list-item-label-text-font: persian;
+}
+
+.exit {
+  padding: 9px 25px;
+  box-sizing: border-box;
+  border-radius: 3px;
+  border: none;
+  /* width: 7% ; */
+  margin-left: 5px;
+  font-family: persian;
+  position: absolute;
+  left: 0;
+  cursor: pointer;
 }
